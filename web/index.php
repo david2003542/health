@@ -24,6 +24,17 @@ $app->get('/', function() use($app) {
   return $app['twig']->render('index.twig');
 });
 
+$app->get('/signup', function() use($app) {
+  return $app['twig']->render('signup.twig');
+});
+
+$app->post('/signup', function (Request $request) {
+  $username = $request->get('name');
+  $account = $request->get('account');
+  $account = $request->get('password');
+  return new Response('Thank you for your sign up!'.$username.'<br><a href=/login>', 201);
+});
+
 $app->get('/login', function() use($app) {
   $app['monolog']->addDebug('entere login page');
   return $app['twig']->render('login.twig');
@@ -31,9 +42,8 @@ $app->get('/login', function() use($app) {
 
 $app->post('/login', function (Request $request) {
   $message = $request->get('account');
-
-
   return new Response('Thank you for your sign in!'.$message, 201);
+
 });
 
 $app->run();
