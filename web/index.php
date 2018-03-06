@@ -1,6 +1,8 @@
 <?php
 
 require('../vendor/autoload.php');
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 $app = new Silex\Application();
 $app['debug'] = true;
@@ -25,6 +27,13 @@ $app->get('/', function() use($app) {
 $app->get('/login', function() use($app) {
   $app['monolog']->addDebug('entere login page');
   return $app['twig']->render('login.twig');
+});
+
+$app->post('/login', function (Request $request) {
+  $message = $request->get('account');
+
+
+  return new Response('Thank you for your sign in!'.$message, 201);
 });
 
 $app->run();
