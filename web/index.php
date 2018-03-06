@@ -32,7 +32,7 @@ $app->post('/signup', function (Request $request) {
   $username = $request->get('name');
   $account = $request->get('account');
   $account = $request->get('password');
-  return new Response('Thank you for your sign up!'.$username.'<br><a href=/login>', 201);
+  return new Response('Thank you for your sign up!'.$username.'<br><a href=/login>', 301);
 });
 
 $app->get('/login', function() use($app) {
