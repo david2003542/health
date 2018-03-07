@@ -42,12 +42,14 @@ $app->post('/signup', function (Request $request) use($app) {
   $username = $request->get('name');
   $account = $request->get('account');
   $password = $request->get('password');
+  var_dump($app['db'])
   $app['db']->insert('member', array(
       'name' => $username,
       'account' => $account,
       'password' => $password
     )
   );
+  
   return new Response('Thank you for your sign up! '.$username.'<br><a href=/login>return to login</a>', 201);
 });
 
