@@ -38,7 +38,7 @@ $app->get('/signup', function() use($app) {
   return $app['twig']->render('signup.twig');
 });
 
-$app->post('/signup', function (Request $request) {
+$app->post('/signup', function (Request $request) use($app) {
   $username = $request->get('name');
   $account = $request->get('account');
   $password = $request->get('password');
