@@ -42,7 +42,6 @@ $app->post('/signup', function (Request $request) {
   $username = $request->get('name');
   $account = $request->get('account');
   $password = $request->get('password');
-  $sql = "Insert into member (name,account,password) values(".$username.",".$account.",".$password.")";
   $app['db']->insert('member', array(
       'name' => $username,
       'account' => $account,
