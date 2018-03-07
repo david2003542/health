@@ -43,7 +43,12 @@ $app->post('/signup', function (Request $request) {
   $account = $request->get('account');
   $password = $request->get('password');
   $sql = "Insert into member (name,account,password) values(".$username.",".$account.",".$password.")";
-  $post = $app['db']->query($sql);
+  $app['db']->insert('member', array(
+      'name' => $username,
+      'account' => $account,
+      'password' => $password
+    )
+  );
   return new Response('Thank you for your sign up! '.$username.'<br><a href=/login>return to login</a>', 201);
 });
 
