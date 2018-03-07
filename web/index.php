@@ -42,7 +42,7 @@ $app->post('/signup', function (Request $request) use($app) {
   $username = $request->get('name');
   $account = $request->get('account');
   $password = $request->get('password');
-  var_dump($app['db'])
+  var_dump($app['db']);
   $app['db']->insert('member', array(
       'name' => $username,
       'account' => $account,
